@@ -14,7 +14,7 @@ defaults:
 
 jobs:
   create-release:
-    if: github.repository_owner == 'openrr'
+    if: github.repository_owner == 'taiki-e'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,12 +28,12 @@ jobs:
       - uses: taiki-e/create-gh-release-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: cargo publish
-        env:
-          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      # - run: cargo publish
+      #   env:
+      #     CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
   upload-assets:
-    if: github.repository_owner == 'openrr'
+    if: github.repository_owner == 'taiki-e'
     needs: [ create-release ]
     strategy:
       matrix:
